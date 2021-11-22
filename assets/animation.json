@@ -1,0 +1,146 @@
+{
+	"textures": [
+		{
+			"image": "animation.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 789,
+				"h": 283
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "sheld1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 281
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 132,
+						"h": 281
+					}
+				},
+				{
+					"filename": "sheld2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 281
+					},
+					"frame": {
+						"x": 135,
+						"y": 1,
+						"w": 132,
+						"h": 281
+					}
+				},
+				{
+					"filename": "sheld3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 281
+					},
+					"frame": {
+						"x": 269,
+						"y": 1,
+						"w": 132,
+						"h": 281
+					}
+				},
+				{
+					"filename": "movedown.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 281
+					},
+					"frame": {
+						"x": 403,
+						"y": 1,
+						"w": 127,
+						"h": 281
+					}
+				},
+				{
+					"filename": "moveup.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 281
+					},
+					"frame": {
+						"x": 532,
+						"y": 1,
+						"w": 127,
+						"h": 281
+					}
+				},
+				{
+					"filename": "ship.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 281
+					},
+					"frame": {
+						"x": 661,
+						"y": 1,
+						"w": 127,
+						"h": 281
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8e69fcefaef19a71a786392485432b46:24bba9e7385b2ff89486411a19eb5d50:9a4e7f1aae4f9765a57ff756284ef5fc$"
+	}
+}
