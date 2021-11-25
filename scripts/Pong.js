@@ -8,7 +8,7 @@ export default class Pong extends Phaser.Scene {
       playerSpeed: 300,
       ballSpeedStart: [-300, -300],
       ballSpeedX: 500,
-      ballSpeedXMultiplier: 1.02,
+      ballSpeedXMultiplier: 1.01,
       ballSpeedXMax: 800,
       ballSpeedY: 70,
       ghostSpeedX: 3,
