@@ -254,7 +254,7 @@ export default class Pong extends Phaser.Scene {
       this.ball.body.velocity.y * this.gameOptions.ghostSpeedX
     );
     this.ghost.setScale(0.5);
-    this.ghost.alpha = 1;
+    this.ghost.alpha = 0;
   }
 
   gameover() {
