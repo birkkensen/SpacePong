@@ -12,16 +12,18 @@ export default class Pong extends Phaser.Scene {
       ballSpeedXMax: 800,
       ballSpeedY: 70,
       ghostSpeedX: 3,
-      gameScore: 10,
-      goal: 50,
+      gameScore: 5,
+      goal: 70,
     };
-    this.cpuTracking = 0;
-    this.cpuTrackArr = [];
     // Center
     this.center = {
       x: this.physics.world.bounds.width / 2,
       y: this.physics.world.bounds.height / 2,
     };
+
+    this.cpuTracking = 0;
+    this.rotation = 0;
+    this.cpuTrackArr = [];
 
     this.ghostExists = false;
     this.hasBounced = false;
@@ -31,7 +33,7 @@ export default class Pong extends Phaser.Scene {
     this.background = this.add.image(this.center.x, this.center.y, "bg");
     this.background.setDisplaySize(this.center.x * 2, this.center.y * 2);
 
-    this.impactSound = this.sound.add("impact", { volume: 0.2 });
+    this.impactSound = this.sound.add("impact", { volume: 1 });
 
     this.particles = this.add.particles("particle");
     this.emitter = this.particles.createEmitter({
@@ -67,11 +69,16 @@ export default class Pong extends Phaser.Scene {
 
     // Left paddle
     this.paddleLeft = this.physics.add.sprite(50, this.center.y, "ship", "ship.png");
+    // this.paddleLeft.setScale(0.5);
+    // this.paddleLeft.setCollideWorldBounds(true);
+    // this.paddleLeft.setImmovable(true);
+    // this.paddleLeft.setOrigin(0, 0.5);
+    // this.paddleLeft.setSize(80, 140);
     this.paddleLeft.setScale(0.5);
     this.paddleLeft.setCollideWorldBounds(true);
     this.paddleLeft.setImmovable(true);
-    // this.paddleLeft.setOrigin(0, 0.5);
-    // this.paddleLeft.setSize(80, 140);
+    this.paddleLeft.setOrigin(0, 0.5);
+    this.paddleLeft.setBodySize(80, 280);
 
     // Right paddle
     this.paddleRight = this.physics.add.sprite(
@@ -80,10 +87,16 @@ export default class Pong extends Phaser.Scene {
       "ship",
       "ship.png"
     );
+    // this.paddleRight.setFlipX(true);
+    // this.paddleRight.setScale(0.5);
+    // this.paddleRight.setCollideWorldBounds(true);
+    // this.paddleRight.setImmovable(true);
     this.paddleRight.setFlipX(true);
     this.paddleRight.setScale(0.5);
     this.paddleRight.setCollideWorldBounds(true);
     this.paddleRight.setImmovable(true);
+    this.paddleRight.setOrigin(1, 0.5);
+    this.paddleRight.setBodySize(80, 280);
     // this.paddleRight.setOrigin(1, 0.5);
     // this.paddleRight.setSize(80, 280);
 
@@ -129,17 +142,22 @@ export default class Pong extends Phaser.Scene {
   update() {
     if (this.paddleRightControls.down.isDown) {
       this.paddleRight.setVelocityY(this.gameOptions.playerSpeed);
-      this.paddleRight.anims.play("movedown", true);
+      this.paddleRight.anims.play("movedown");
     } else if (this.paddleRightControls.up.isDown) {
       this.paddleRight.setVelocityY(this.gameOptions.playerSpeed * -1);
-      this.paddleRight.anims.play("moveup", true);
+      this.paddleRight.anims.play("moveup");
     } else {
       this.paddleRight.setVelocityY(0);
     }
     this.physics.add.collider(this.ball, this.paddleLeft, this.bounce, null, this);
     this.physics.add.collider(this.ball, this.paddleRight, this.bounce, null, this);
 
-    this.ball.angle++;
+    this.ball.angle += this.rotation;
+    if (this.rotation < 1) {
+      this.rotation = 2;
+    } else {
+      this.rotation = this.rotation - 0.2;
+    }
     // Points
     this.checkIfPoint();
     this.ghostBall();
@@ -147,8 +165,9 @@ export default class Pong extends Phaser.Scene {
     this.gameover();
   }
   bounce(ball, player) {
-    player.anims.play("shield", true);
     this.impactSound.play();
+    player.anims.play("shield");
+    this.rotation = 50;
     if (this.firstBallBounce) {
       if (this.ball.body.velocity.x > 0) {
         this.ball.setVelocityX(this.gameOptions.ballSpeedX);

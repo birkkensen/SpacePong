@@ -14,7 +14,7 @@ export default class StartScene extends Phaser.Scene {
     this.load.image("particle", "./assets/particle.png");
   }
   create() {
-    this.spaceSound = this.sound.add("space", { volume: 0.2 });
+    this.spaceSound = this.sound.add("space", { volume: 0.2, loop: true });
     this.center = {
       x: this.physics.world.bounds.width / 2,
       y: this.physics.world.bounds.height / 2,
